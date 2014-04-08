@@ -121,15 +121,7 @@ public class PlayerWindow
         playlistView.setLayoutData(gd_playlistView);
         playlistView.setLinesVisible(true);
         
-        screen_composite = new Composite(main_composite, SWT.BACKGROUND | SWT.EMBEDDED);
-        fd_screen_composite = new FormData();
-        fd_screen_composite.bottom = new FormAttachment(0, 300);
-        fd_screen_composite.left = new FormAttachment(0);
-        fd_screen_composite.top = new FormAttachment(0);
-        fd_screen_composite.right = new FormAttachment(0, 600);
-        screen_composite.setLayoutData(fd_screen_composite);
-        screen_composite.setVisible(true);
-        screen_composite.setRedraw(true);
+        
                 
         TableColumn NameColumn = new TableColumn(playlistView, SWT.NONE);
         NameColumn.setResizable(false);
@@ -316,14 +308,24 @@ public class PlayerWindow
                 switchToPlaylist();
                 
                 screenFrame.dispose();
-                screen_composite.redraw();
+                screen_composite.dispose();
                 btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/play.png"));
             }
         });
 
         shell.addDisposeListener(new DisposeListener() {
             public void widgetDisposed(DisposeEvent arg0) {
-                MediaPlayer.getInstance().stop();                                
+                MediaPlayer.getInstance().stop();
+                screenFrame.dispose();
+                screen_composite.dispose();
+                
+                try
+                {
+                    MediaPlayer.getInstance().finalize();
+                } 
+                catch (Throwable e)
+                {
+                }                            
             }
         });
 
@@ -399,12 +401,22 @@ public class PlayerWindow
                 }
                 else
                 { 
+                    MediaPlayer.getInstance().stop();
+                    
                     if (MediaPlayer.getInstance().initPlayer(index))   
                     {
                         Component media_visual = MediaPlayer.getInstance().getVisual();
                       
                         if (media_visual != null)
                         {  
+                            screen_composite = new Composite(main_composite, SWT.BACKGROUND | SWT.EMBEDDED);
+                            fd_screen_composite = new FormData();
+                            fd_screen_composite.bottom = new FormAttachment(0, 300);
+                            fd_screen_composite.left = new FormAttachment(0);
+                            fd_screen_composite.top = new FormAttachment(0);
+                            fd_screen_composite.right = new FormAttachment(0, 600);
+                            screen_composite.setLayoutData(fd_screen_composite);
+                        
                             screenFrame = SWT_AWT.new_Frame(screen_composite);
                             screenFrame.add(media_visual);
                           
