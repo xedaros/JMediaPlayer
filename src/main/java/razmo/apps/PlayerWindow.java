@@ -157,23 +157,23 @@ public class PlayerWindow
         
         btnPlay = new Button(controle_composite, SWT.NONE);
         btnPlay.setEnabled(false);
-        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/play.png"));
+        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/play.png"));
 
         btnStop = new Button(controle_composite, SWT.NONE);
         btnStop.setEnabled(false);
-        btnStop.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/stop.png"));
+        btnStop.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/stop.png"));
 
         btnPrevious = new Button(controle_composite, SWT.NONE);
         btnPrevious.setEnabled(false);
-        btnPrevious.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/skip_previous.png"));
+        btnPrevious.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/skip_previous.png"));
 
         btnNext = new Button(controle_composite, SWT.NONE);
         btnNext.setEnabled(false);
-        btnNext.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/skip_next.png"));
+        btnNext.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/skip_next.png"));
 
         btnSwitch = new Button(controle_composite, SWT.NONE);
         btnSwitch.setEnabled(false);
-        btnSwitch.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/list_2.png"));
+        btnSwitch.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/list_2.png"));
         btnSwitch.setVisible(true);
         
         Composite composite = new Composite(controle_composite, SWT.NONE);
@@ -317,7 +317,7 @@ public class PlayerWindow
                 
                 screenFrame.dispose();
                 screen_composite.redraw();
-                btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/play.png"));
+                btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/play.png"));
             }
         });
 
@@ -389,12 +389,12 @@ public class PlayerWindow
                     if (MediaPlayer.getInstance().isPause())
                     {
                         MediaPlayer.getInstance().play();
-                        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/pause.png"));
+                        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/pause.png"));
                     }
                     else
                     {                        
                         MediaPlayer.getInstance().pause();
-                        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/play.png"));
+                        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/play.png"));
                     }
                 }
                 else
@@ -417,7 +417,7 @@ public class PlayerWindow
                         }
   
                         MediaPlayer.getInstance().play();
-                        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/MediaPlayer/images/pause.png"));
+                        btnPlay.setImage(SWTResourceManager.getImage("/home/jamal/Development/java/JMediaPlayer/images/pause.png"));
                         
                         btnStop.setEnabled(true);
                         btnPrevious.setEnabled(true);
